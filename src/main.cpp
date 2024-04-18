@@ -6,10 +6,14 @@
 #define ECHO_PIN 9
 #define MAX_DISTANCE 400
 
+// init the sonar and servo
 NewPing sonar(TRIG_PIN, ECHO_PIN, MAX_DISTANCE);
 Servo DoorServo;
 
+// motion sensor pin
 int pirPin = 5;
+
+// variable that we will store the distance value from the sonar
 float distance;
 void setup()
 {
@@ -24,6 +28,7 @@ void loop()
   delay(500);
 }
 
+// func to open the bin door when someone gets closer than 5cm
 void doorDetection()
 {
   distance = sonar.ping_cm();
@@ -36,6 +41,7 @@ void doorDetection()
   DoorServo.write(0);
 }
 
+// WIP
 void motionDetection()
 {
   int motion;
